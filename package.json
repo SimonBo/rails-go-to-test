@@ -17,8 +17,15 @@
 		"commands": [{
             "command": "rails-go-to-test.goToTest",
             "title": "Go to test"
-
-		}]
+		}],
+		"keybindings": [
+      {
+        "command": "rails-go-to-test.goToTest",
+        "key": "ctrl+shift+t",
+        "mac": "cmd+shift+t",
+        "when": "editorTextFocus"
+      }
+    ]
 	},
 	"scripts": {
 		"lint": "eslint .",
