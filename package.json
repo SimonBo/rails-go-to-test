@@ -15,17 +15,17 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:rails-go-to-test.goToTest"
+        "onCommand:extension.goToTest"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [{
-            "command": "rails-go-to-test.goToTest",
+            "command": "extension.goToTest",
             "title": "Go to test"
 		}],
 		"keybindings": [
       {
-        "command": "rails-go-to-test.goToTest",
+        "command": "extension.goToTest",
         "key": "ctrl+shift+t",
         "mac": "cmd+shift+t",
         "when": "editorTextFocus"
