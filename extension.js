@@ -63,7 +63,7 @@ function activate(context) {
 			prompt(relative, function() {
 				mkdirp.sync(dirname);
 				fs.closeSync(
-					fs.writeFile(related, resolver.testContent(), function (err) {
+					fs.writeFile(related, resolver.testContent(fileName), function (err) {
 						if (err) throw err;
 						openFile(related);
 						})

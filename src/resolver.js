@@ -53,10 +53,30 @@ function specToCode(file) {
 	return file.replace('/test/', '/app/');
 }
 
-function testContent() {
+function snake2Pascal(str) {
+  str +='';
+  str = str.split('_');
+
+  function upper( str ){
+      return str.slice(0,1).toUpperCase() + str.slice(1,str.length);
+  }
+
+
+  for(var i=0;i<str.length;i++){
+      var str2 = str[i].split('/');
+      for(var j=0;j<str2.length;j++){
+          str2[j] = upper(str2[j]);
+      }
+      str[i] = str2.join('');
+  }
+  return str.join('');
+}
+
+function testContent(file) {
+  const testTitle = snake2Pascal(file.match(/([^\/]+$)/)[1].replace('.rb', '_test'))
   const text = `require 'test_helper'
 
-class  < ActiveSupport::TestCase
+class ${testTitle} < ActiveSupport::TestCase
   test "" do
 
   end
@@ -66,4 +86,4 @@ end
   return text;
 }
 
-module.exports = { getRelated, isSpec, codeToSpec, specToCode, testContent }
+module.exports = { getRelated, isSpec, codeToSpec, specToCode, testContent, snake2Pascal }
