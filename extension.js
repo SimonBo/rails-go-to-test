@@ -1,6 +1,10 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
+const resolver = require('./resolver');
+const fs = require('fs');
+const path = require('path');
+const mkdirp = require('mkdirp');
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -8,6 +12,24 @@ const vscode = require('vscode');
 /**
  * @param {vscode.ExtensionContext} context
  */
+function openFile(fileName) {
+	vscode.workspace
+		.openTextDocument(fileName)
+		.then(vscode.window.showTextDocument);
+}
+
+function prompt(fileName, cb) {
+	let options = {
+		placeHolder: `Create ${fileName}?`
+	}
+	vscode.window.showQuickPick(["Yes", "No"], options)
+			.then(function(answer) {
+				if (answer === "Yes") {
+					cb();
+				}
+			});
+}
+
 function activate(context) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
@@ -21,8 +43,31 @@ function activate(context) {
 		// The code you place here will be executed every time your command is executed
 
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Go to test from rails-go-to-test!');
-	});
+		let editor = vscode.window.activeTextEditor;
+		if (!editor) {
+			return; // No open text editor
+		}
+
+		let document = editor.document;
+		let fileName = document.fileName;
+		let related = resolver.getRelated(fileName);
+		let relative = vscode.workspace.asRelativePath(related);
+		let fileExists = fs.existsSync(related);
+		let dirname = path.dirname(related);
+
+		//console.log('fileExists', fileExists);
+
+		if (fileExists) {
+			openFile(related);
+		} else {
+			prompt(relative, function() {
+				mkdirp.sync(dirname);
+				fs.closeSync(fs.openSync(related, 'w'));
+				openFile(related);
+			});
+		}
+
+		});
 
 	context.subscriptions.push(disposable);
 }
