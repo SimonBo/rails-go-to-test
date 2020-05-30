@@ -2,7 +2,7 @@
 	"name": "rails-go-to-test",
 	"displayName": "Rails go to test",
 	"description": "Switch between code and test files in Rails",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "SimonBo",
 	"repository": {
 		"type": "git",
