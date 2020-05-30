@@ -10,13 +10,13 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:rails-go-to-test.helloWorld"
+        "onCommand:rails-go-to-test.goToTest"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [{
-            "command": "rails-go-to-test.helloWorld",
-            "title": "Hello World"
+            "command": "rails-go-to-test.goToTest",
+            "title": "Go to test"
 
 		}]
 	},
