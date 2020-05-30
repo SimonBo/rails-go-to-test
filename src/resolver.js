@@ -34,10 +34,9 @@ function codeToSpec(file) {
 }
 
 function specToCode(file) {
-
 	let viewRegex = /(.erb|.haml|.slim)_test.rb$/;
+  let isViewFile = file.match(viewRegex);
 
-	let isViewFile = file.match(viewRegex);
 	if (isViewFile) {
 		return file
 			.replace('_test.rb', '')
@@ -54,4 +53,17 @@ function specToCode(file) {
 	return file.replace('/test/', '/app/');
 }
 
-module.exports = { getRelated, isSpec, codeToSpec, specToCode }
+function testContent() {
+  const text = `require 'test_helper'
+
+class  < ActiveSupport::TestCase
+  test "" do
+
+  end
+end
+  `;
+
+  return text;
+}
+
+module.exports = { getRelated, isSpec, codeToSpec, specToCode, testContent }

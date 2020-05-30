@@ -62,8 +62,12 @@ function activate(context) {
 		} else {
 			prompt(relative, function() {
 				mkdirp.sync(dirname);
-				fs.closeSync(fs.openSync(related, 'w'));
-				openFile(related);
+				fs.closeSync(
+					fs.writeFile(related, resolver.testContent(), function (err) {
+						if (err) throw err;
+						openFile(related);
+						})
+					)
 			});
 		}
 
