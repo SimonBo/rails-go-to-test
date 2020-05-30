@@ -4,6 +4,10 @@
 	"description": "Switch between code and test files in Rails",
 	"version": "0.0.1",
 	"publisher": "SimonBo",
+	"repository": {
+		"type": "git",
+    "url": "https://github.com/SimonBo/rails-go-to-test"
+	},
 	"engines": {
 		"vscode": "^1.45.0"
 	},
