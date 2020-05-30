@@ -3,6 +3,7 @@
 	"displayName": "Rails go to test",
 	"description": "Switch between code and test files in Rails",
 	"version": "0.0.1",
+	"publisher": "SimonBo",
 	"engines": {
 		"vscode": "^1.45.0"
 	},
