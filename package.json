@@ -1,7 +1,7 @@
 {
 	"name": "rails-go-to-test",
-	"displayName": "rails-go-to-test",
-	"description": "",
+	"displayName": "Rails go to test",
+	"description": "Switch between code and test files in Rails",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.45.0"
