@@ -37,6 +37,9 @@
 		"pretest": "yarn run lint",
 		"test": "node ./test/runTest.js"
 	},
+	"dependencies": {
+    "mkdirp": "^0.5.1"
+  },
 	"devDependencies": {
         "@types/vscode": "^1.45.0",
         "@types/glob": "^7.1.1",
