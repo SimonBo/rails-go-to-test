@@ -21,7 +21,7 @@ In keybindings.json
   ...
 	{
 		"key": "shift-cmd-t",
-		"command": "rails-go-to-test.railsGoToTest",
+		"command": "extension.railsGoToTest",
 		"when": "editorFocus"
 	}
 	...
