@@ -10,12 +10,12 @@ const mkdirp = require('mkdirp');
 // your extension is activated the very first time the command is executed
 
 /**
- * @param {vscode.ExtensionContext} context
- */
+* @param {vscode.ExtensionContext} context
+*/
 function openFile(fileName) {
 	vscode.workspace
-		.openTextDocument(fileName)
-		.then(vscode.window.showTextDocument);
+	.openTextDocument(fileName)
+	.then(vscode.window.showTextDocument);
 }
 
 function prompt(fileName, cb) {
@@ -23,11 +23,11 @@ function prompt(fileName, cb) {
 		placeHolder: `Create ${fileName}?`
 	}
 	vscode.window.showQuickPick(["Yes", "No"], options)
-			.then(function(answer) {
-				if (answer === "Yes") {
-					cb();
-				}
-			});
+	.then(function(answer) {
+		if (answer === "Yes") {
+			cb();
+		}
+	});
 }
 
 function activate(context) {
@@ -62,16 +62,14 @@ function activate(context) {
 		} else {
 			prompt(relative, function() {
 				mkdirp.sync(dirname);
-				fs.closeSync(
-					fs.writeFile(related, resolver.testContent(fileName), function (err) {
-						if (err) throw err;
-						openFile(related);
-						})
-					)
+				fs.writeFile(related, resolver.testContent(fileName), function (err) {
+					if (err) throw err;
+					openFile(related);
+				})
 			});
 		}
 
-		});
+	});
 
 	context.subscriptions.push(disposable);
 }
