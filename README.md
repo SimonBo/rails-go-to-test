@@ -12,17 +12,41 @@ Enjoy!
 - Ctrl + Shift + t
 - Cmd + Shift + t (Mac)
 
-## Redine shortcuts:
+## Change keybinding:
 
+Within VSCode (last tested in v1.56.1):
+1. Open _Keyboard Shortcuts_ menu (`ctrl+k ctrl+s` for windows, `cmd+k cmd+s` for mac)
+1. Search for `Go to test`
+1. Hover over this extension's shortcut (identified by `extension.goToTest`) and click on the edit icon to the left (looks like a pencil)
+1. Press a key combination and save to overwrite the default keybinding
 
-In keybindings.json
+Alternatively,
+
+In `keybindings.json`:
 
 ```
-  ...
-	{
-		"key": "shift-cmd-t",
-		"command": "extension.railsGoToTest",
-		"when": "editorFocus"
-	}
+[
 	...
+	{
+		"key": "alt+cmd+t", // Your chosen combination
+		"command": "extension.goToTest",
+		"when": "editorTextFocus"
+	},
+	...
+]
+```
+
+Shortcuts defined here will work in-addition-to whatever keybinding is specified in the _Keyboard Shortcuts_ menu.
+If you wish to **replace** the default keybinding, add the following to `keybindings.json`:
+
+```
+[
+	...
+	{
+		"key": "shift+cmd+t",
+		"command": "-extension.goToTest", // Notice the `-` sign
+		"when": "editorTextFocus"
+	},
+	...
+]
 ```
