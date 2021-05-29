@@ -2,8 +2,8 @@
 	"name": "rails-go-to-test",
 	"displayName": "Rails go to test",
 	"description": "Switch between code and test files in Rails",
-	"version": "0.0.3",
-	"publisher": "SimonBo",
+	"version": "0.0.4",
+	"publisher": "SzymonBorucki",
 	"keywords": ["rails", "minitest", "go to test", "rails-go-to-test", "ruby"],
 	"repository": {
 		"type": "git",
