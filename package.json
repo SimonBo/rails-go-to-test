@@ -10,7 +10,7 @@
     "url": "https://github.com/SimonBo/rails-go-to-test"
 	},
 	"engines": {
-		"vscode": "^1.45.0"
+		"vscode": "^1.56.0"
 	},
 	"categories": [
 		"Other"
